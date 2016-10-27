@@ -1,0 +1,44 @@
+<!doctype html>
+<html ng-app="demo">
+      <head>
+            <title>Hello AngularJS</title>
+            <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+      <script>
+      angular.module('demo', [])
+      .controller('Hello', function($scope, $http) {
+          $http.get('http://rest-service.guides.spring.io/greeting').
+              then(function(response) {
+                  $scope.greeting = response.data;
+              });
+      });
+      </script>
+      </head>
+
+      <body>
+            <div ng-controller="Hello">
+                  <p>The ID is {{greeting.id}}</p>
+                  <p>The content is {{greeting.content}}</p>
+            </div>
+      </body>
+</html>
+
+
+---------------------------------------------------------------------------------------------------------------------
+Explanattion:
+
+
+      angular.module('demo', [])
+      .controller('Hello', function($scope, $http) {
+          $http.get('http://rest-service.guides.spring.io/greeting').
+              then(function(response) {
+                  $scope.greeting = response.data;
+              });
+      });
+Above is code which basically calls webservice and binds it to gretting object.
+
+http://rest-service.guides.spring.io/greeting' This is URL . In our case it will be http://localhost:9090/TestCaseManagement/getTestCase/1
+
+Please revert for any issues.
+
+Best Regards
+Ajinkya
